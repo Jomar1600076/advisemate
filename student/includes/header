@@ -1,0 +1,22 @@
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark primary-color-dark lighten-1 sticky-top">
+			<a class="navbar-brand" href="#">
+		    <img src="logo.png" height="40" alt="mdb logo">
+		  </a>
+			  <a class="navbar-brand" href="#">Advisemate</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+			    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+			    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+			            alt="avatar image" height="35">
+			  </button>
+			  <div class="collapse navbar-collapse" >
+			    <ul class="navbar-nav ml-auto nav-flex-icons">
+			      <li class="nav-item avatar">
+			        <a class="nav-link p-0" href="#">
+			        	Jomar L. Salazar
+			          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+			            alt="avatar image" height="35">
+			        </a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
