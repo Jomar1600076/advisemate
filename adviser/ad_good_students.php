@@ -62,8 +62,6 @@ if(!isset($_SESSION["ad_id"])){
                         <tr>
                             <th>Student ID</th>
                             <th>Name</th>
-                            <th>Course</th>
-                            <th>College</th>
                         </tr>
                         </thead>
                         <tbody id="getStudents">

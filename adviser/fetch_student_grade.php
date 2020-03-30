@@ -6,7 +6,9 @@ if(isset($_POST["getGrades"])){
     $con = mysqli_connect("localhost", "root", "", "advisemate");
     $yr_lvl = $_SESSION["ad_yrlvl"];
     $query = "SELECT * FROM 
-        grades, subjects, students WHERE grades.grade_status = 1 
+        grades, subjects, students WHERE 
+        students.status = 0 
+        AND grades.grade_status = 1 
         AND students.student_id = grades.student_id 
         AND students.year_lvl = $yr_lvl
         AND students.stud_cur = subjects.sub_cur GROUP BY grades.student_id";

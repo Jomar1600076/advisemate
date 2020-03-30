@@ -20,6 +20,7 @@
                 FROM
                 students, college, course 
                 WHERE
+                students.status = 0 AND
                 students.student_college =  college.college_id AND
                 students.student_course = course.course_id AND 
                 year_lvl = $yr_lvl LIMIT $offset, $no_of_records_per_page
@@ -92,8 +93,6 @@
                 <tr>
                     <td><a href=studentProfile.php?id=$stud_id class=text-primary>$stud_id</td>
                     <td>$fullname</td>
-                    <td>$course</td>
-                    <td>$college</td>
                     <td>$yr_lvl</td>
                 </tr>
                 ";
