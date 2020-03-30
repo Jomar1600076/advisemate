@@ -10,6 +10,8 @@
         <ul id="students">
             <a href="ad_students.php" class="list-group-item list-group-item-action">
                 <i class="fas fa-chalkboard-teacher mr-3"></i>All Students</a>
+            <a href="ad_accept_student.php" class="list-group-item list-group-item-action">
+                <i class="fas fa-user-plus mr-3"></i>Accept St</a>
             <a href="ad_good_students.php" class="list-group-item list-group-item-action">
                 <i class="fas fa-users mr-3"></i>Outstanding St</a>
             <a href="ad_prob_students.php" class="list-group-item list-group-item-action">
