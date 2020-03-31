@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body">
         <!-- Default form register -->
-            <form class="text-center" action="addUnitChair.php" method="post">
+            <form class="text-center" action="addUnitChair.php" method="post" autocomplete="off">
               <input type="text" id="defaultRegisterFormUserID" class="form-control mb-2" placeholder="User ID" name="user_id" required>
               <input type="text" id="defaultRegisterFormPassword" class="form-control mb-2" placeholder="Password" name="pword" required>
               <input type="text" id="defaultRegisterFormFname" class="form-control mb-2" placeholder="First Name" name="fname" required>

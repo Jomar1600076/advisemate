@@ -69,7 +69,7 @@
       </div>
       <div class="modal-body">
         <!-- Default form register -->
-            <form class="text-center" action="" method="post">
+            <form class="text-center" action="" method="post" autocomplete="off">
               <input type="text" id="defaultRegisterFormUserID" class="form-control mb-2" placeholder="Employee ID" name="ad_id" required>
               <input type="text" id="defaultRegisterFormFname" class="form-control mb-2" placeholder="First Name" name="ad_fname" required>
               <input type="text" id="defaultRegisterPhoneLname" class="form-control mb-2" placeholder="Last Name" name="ad_lname" required>
