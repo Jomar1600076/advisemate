@@ -62,8 +62,6 @@ if(!isset($_SESSION["ad_id"])){
                         <tr>
                             <th>Student ID</th>
                             <th>Name</th>
-                            <th>Course</th>
-                            <th>College</th>
                             <th>Yr Lvl</th>
                         </tr>
                         </thead>
@@ -78,7 +76,7 @@ if(!isset($_SESSION["ad_id"])){
                         }
                         $no_of_records_per_page = 6;  
                         $offset = ($pageno-1) * $no_of_records_per_page;
-                        $total_pages_sql = "SELECT COUNT(*) FROM students";
+                        $total_pages_sql = "SELECT COUNT(*) FROM students WHERE status = 0";
                         $result = mysqli_query($con,$total_pages_sql);
                         $total_rows = mysqli_fetch_array($result)[0];
                         $total_pages = ceil($total_rows / $no_of_records_per_page);
@@ -88,6 +86,7 @@ if(!isset($_SESSION["ad_id"])){
                                 FROM
                                 students, college, course 
                                 WHERE
+                                students.status = 0 AND
                                 students.student_college =  college.college_id AND
                                 students.student_course = course.course_id AND 
                                 year_lvl = '$yr_lvl' LIMIT $offset, $no_of_records_per_page
@@ -101,15 +100,11 @@ if(!isset($_SESSION["ad_id"])){
                           while($row = mysqli_fetch_array($run_query)){
                               $fullname = $row['Fullname'];
                               $stud_id = $row['student_id'];
-                              $course = $row['course_desc'];
-                              $college = $row['college_desc'];
                               $yr_lvl = $row['year_lvl'];
                             ?>
                               <tr>
                                   <td><a href="studentProfile.php?id=<?php echo $stud_id ?>" class="text-primary"><?php echo $stud_id ?></td>
                                   <td><?php echo $fullname ?></td>
-                                  <td><?php echo $course ?></td>
-                                  <td><?php echo $college ?></td>
                                   <td><?php echo $yr_lvl ?></td>
                               </tr>
                               <?php

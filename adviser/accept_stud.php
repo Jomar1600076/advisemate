@@ -39,46 +39,36 @@ $sql = "SELECT student_id, concat(fname,' ',mname, ' ',lname) Fullname, course_d
                 <td class="col-sm-2"><a href="studentProfile.php?id=<?php echo $stud_id ?>" class="text-primary"><?php echo $stud_id ?></td>
                 <td class="col-sm-4"><?php echo $fullname ?></td>
                 <td class="col-sm-2"><?php echo $yr_lvl ?></td>
-                <td class="col-sm-2">
-                        
-                </td>
             </tr>
             <?php
         }
 
-if(isset($_POST['add'])){
+        if(isset($_POST['add'])){
+            if(isset($_POST['update'])){
+              foreach($_POST['update'] as $updateid){
+                $status = 0;
+                $sql = "UPDATE students SET status = '".$status."' WHERE student_id = '$updateid'";
+                $run_query = mysqli_query($con,$sql);
+              }
+              if (!$run_query) 
+                {
+                printf("Error: %s\n", mysqli_error($con));
+                exit();
+                } 
+            }
+          }
 
-    if(isset($_POST['update'])){
-      foreach($_POST['update'] as $updateid){
-
-        $status = 0;
-
-        $sql = "UPDATE students SET status = '".$status."' WHERE student_id = '$updateid'";
-        $run_query = mysqli_query($con,$sql);
-  
-      }
-      if (!$run_query) 
-        {
-        printf("Error: %s\n", mysqli_error($con));
-        exit();
-        } 
-    }
-  }
-
-  if(isset($_POST['delete'])){
-
-    if(isset($_POST['update'])){
-      foreach($_POST['update'] as $updateid){
-
-        $sql = "DELETE FROM students WHERE student_id = $updateid";
-        $run_query = mysqli_query($con,$sql);
-  
-      }
-      if (!$run_query) 
-        {
-        printf("Error: %s\n", mysqli_error($con));
-        exit();
-        } 
-    }
-  }
+          if(isset($_POST['delete'])){
+            if(isset($_POST['update'])){
+              foreach($_POST['update'] as $updateid){
+                $sql = "DELETE FROM students WHERE student_id = $updateid";
+                $run_query = mysqli_query($con,$sql);
+              }
+              if (!$run_query) 
+                {
+                printf("Error: %s\n", mysqli_error($con));
+                exit();
+                }
+            }
+          }
 ?>

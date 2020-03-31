@@ -61,7 +61,6 @@ if(!isset($_SESSION["ad_id"])){
                                 <th class="col-sm-2">Student ID</th>
                                 <th class="col-sm-4">Name</th>
                                 <th class="col-sm-2">Yr Lvl</th>
-                                <th class="col-sm-2"></th>
                             </tr>
                             </thead>
                             <tbody>

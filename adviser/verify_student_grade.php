@@ -54,24 +54,53 @@ if(!isset($_SESSION["ad_id"])){
         <input type="hidden" id="yrlvl" value="<?php echo $_SESSION["ad_yrlvl"]; ?>">
             <div class="card-body">
                 <div class="table-wrapper">
+                  <form action="" method="post">
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th>Grade</th>
-                            <th>Subject Code</th>
-                            <th>Student ID</th>
+                        <tr class="row"> 
+                            <th class="col-md-2"><input type="checkbox" class="ml-5 mr-2" id="checkAll">Check</th>
+                            <th class="col-md-1">Grade</th>
+                            <th class="col-md-2">Subject Code</th>
+                            <th class="col-md-5">Subject Description</th>
+                            <th class="col-md-2"><button name="verify" class="btn btn-primary btn-sm p-2"><i class="fas fa-check-circle mr-2"></i>Verify Checked</button></th>
                         </tr>
                         </thead>
                         <tbody>
                           <?php include("verify_student_request.php") ?>
                         </tbody>
                     </table>
+                  </form>
                 </div>
             </div>
         </div>
       </div>
     </div>
   </main>
-</body>
+  <script>
+    $(document).ready(function(){
+        // Check/Uncheck ALl
+        $('#checkAll').change(function(){
+        if($(this).is(':checked')){
+            $('input[name="update[]"]').prop('checked',true);
+        }else{
+            $('input[name="update[]"]').each(function(){
+            $(this).prop('checked',false);
+            });
+        }
+        });
 
+        // Checkbox click
+        $('input[name="update[]"]').click(function(){
+        var total_checkboxes = $('input[name="update[]"]').length;
+        var total_checkboxes_checked = $('input[name="update[]"]:checked').length;
+
+        if(total_checkboxes_checked == total_checkboxes){
+            $('#checkAll').prop('checked',true);
+        }else{
+            $('#checkAll').prop('checked',false);
+        }
+        });
+    });
+  </script>
+</body>
 </html>
