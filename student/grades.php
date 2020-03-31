@@ -55,7 +55,7 @@ include('function.php');
 				        <a class="nav-link" href="grades.php">Grades<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="#">About</a>
+					  	<a class="nav-link" href="notif.php">Notifications</a>
 				      </li>
 				    </ul>
 				  </div>
@@ -144,7 +144,7 @@ include('function.php');
 	                               				{
 												printf("Error: %s\n", mysqli_error($connect));
 												exit();
-											} 
+											}
 										}
 										mysqli_close($connect);
 
@@ -160,7 +160,7 @@ include('function.php');
 								        <td><?php echo $row['sub_unit']; ?></td>
 								        <td>
 										<?php
-											if($row['grade_status'] == '' || $row['grade_status'] == 1){
+											if($row['grade_status'] == '2' || $row['grade_status'] == 1 ){
 												?>	
 													<select class="input_grade" id="input_grade" name="grades[]">
 													<option value="<?php echo $row['grade'];?>"><?php echo $row['grade'];?></option>

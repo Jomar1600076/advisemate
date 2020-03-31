@@ -48,7 +48,7 @@ include('function.php');
 				        <a class="nav-link" href="grades.php">Grades </a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="#">About</a>
+					  	<a class="nav-link" href="notif.php">Notifications</a>
 				      </li>
 				    </ul>
 				  </div>
