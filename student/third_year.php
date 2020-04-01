@@ -56,19 +56,19 @@ include('function.php');
 						<div>
 							<nav aria-label="Page navigation example" class="float-right mr-3 mt-1">
 								<ul class="pagination pg-blue">
-									<li class="page-item active">
-										<a class="page-link" href="index.php" tabindex="-1">1 <span class="sr-only">(current)</span></a>
+									<li class="page-item">
+										<a class="page-link" href="index.php" tabindex="-1">1</a>
 									</li>
 									<li class="page-item" ><a class="page-link" href="second_year.php" >2</a></li>
-									<li class="page-item">
-										<a class="page-link" href="third_year.php" >3</a>
+									<li class="page-item active">
+										<a class="page-link" href="third_year.php">3<span class="sr-only">(current)</span></a>
 									</li>
 									<li class="page-item"><a class="page-link" href="fourth_year.php" >4</a></li>
 								</ul>
 							</nav>
 						</div>
 
-  						<h6 class="text-center font-weight-bold">First Year</h6>
+  						<h6 class="text-center font-weight-bold">Third Year</h6>
 						<h6 class="text-left ml-2 mb-0">1st Semester</h6>
   						<div class="card-body">
 							<div class="table-responsive">
@@ -84,7 +84,7 @@ include('function.php');
 										</tr>
 									</thead>
 									<tbody>
-										<?php include("mygrade1.php") ?>
+										<?php include("year_three_1.php") ?>
 									</tbody>
 								</table>
 							</div>
@@ -104,7 +104,7 @@ include('function.php');
 										</tr>
 									</thead>
 									<tbody>
-										<?php include("mygrade2.php") ?>
+										<?php include("year_three_2.php") ?>
 									</tbody>
 								</table>
 							</div>
