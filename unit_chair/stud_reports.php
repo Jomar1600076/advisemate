@@ -39,28 +39,17 @@ if(!isset($_SESSION["chair_id"])){
     <div class="row wow fadeIn">
         <div class="col">
           <div class="card">
-          <div class="card-header primary-color-dark">
-            <div class="row">
-                <div class="col-md-2">    
-                  <input type="text" class="form-control mt-2" placeholder="Student Info" name="student_search_id" id="student_search_id" autocomplete="off">
-                </div>
-                <div class="col"></div>
-                <div class="col-md-3">
-                  <select class="browser-default custom-select mb-2" name="year_lvl" id="year_lvl">
-                    <option value = ""selected>Select Year Level</option>
-                    <?php echo $yr_lvl;?>
-                  </select>
-                </div>
-            </div>  
-        </div>
             <div class="card-body">
+                <h3>Student Audit Logs</h3>
+                </hr>
                 <div class="table-wrapper">
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
-                        <tr class="row">
-                            <th class="col-md-2">Student ID</th>
-                            <th class="col">Name</th>
-                            <th class="col-md-3">Year Level</th>
+                        <tr>
+                            <th>Date</th>
+                            <th>Transaction</th>
+                            <th>Created By</th>
+                            <th>Info</th>
                         </tr>
                         </thead>
                         <tbody id="">
@@ -74,18 +63,21 @@ if(!isset($_SESSION["chair_id"])){
                         }
                         $no_of_records_per_page = 6;  
                         $offset = ($pageno-1) * $no_of_records_per_page;
-                        $total_pages_sql = "SELECT COUNT(*) FROM students WHERE status= 0";
+                        $total_pages_sql = "SELECT COUNT(*) FROM student_logs";
                         $result = mysqli_query($con,$total_pages_sql);
+                        if (!$result) 
+                        {
+                          printf("Error: %s\n", mysqli_error($con));
+                          exit();
+                        }
                         $total_rows = mysqli_fetch_array($result)[0];
                         $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                        $sql = "SELECT student_id, concat(fname,' ',mname, ' ',lname) fullname, course_desc, college_desc, year_lvl
-                                FROM
-                                students, college, course 
-                                WHERE
-                                students.student_college =  college.college_id AND
-                                students.status = 0 AND
-                                students.student_course = course.course_id LIMIT $offset, $no_of_records_per_page
+                        $sql = "SELECT concat(ad_fname,' ', ad_mname,'. ', ad_lname) ad_name, trans_date, advisers.ad_id, trans_info, concat(fname, ' ' ,lname) stud_name
+                                    FROM student_logs 
+                                    LEFT JOIN advisers on advisers.ad_id = student_logs.createdby
+                                    LEFT JOIN students on students.student_id = student_logs.student_id
+                                    GROUP BY students.student_id LIMIT $offset, $no_of_records_per_page
                                 ";
                         $run_query = mysqli_query($con,$sql);
                         if (!$run_query) 
@@ -94,16 +86,12 @@ if(!isset($_SESSION["chair_id"])){
                         exit();
                     } 
                           while($row = mysqli_fetch_array($run_query)){
-                              $fullname = $row['fullname'];
-                              $stud_id = $row['student_id'];
-                              $course = $row['course_desc'];
-                              $college = $row['college_desc'];
-                              $yr_lvl = $row['year_lvl'];
                             ?>
-                              <tr class="row">
-                                  <td class="col-md-2"><a href="studentProfile.php?id=<?php echo $stud_id ?>" class="text-primary"><?php echo $stud_id ?></td>
-                                  <td class="col"><?php echo $fullname ?></td>
-                                  <td class="col-md-3"><?php echo $yr_lvl ?></td>
+                              <tr>
+                                  <td><?php echo $row['trans_date'] ?></td>
+                                  <td><?php echo $row['trans_info'] ?></td>
+                                  <td><?php echo $row['ad_name'] ?></td>
+                                  <td><?php echo $row['stud_name'] ?></td>
                               </tr>
                               <?php
                           }

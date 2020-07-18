@@ -10,7 +10,7 @@ if(isset($_POST["query"])){
     FROM subjects
     WHERE       
     sub_year LIKE '%".$search."%' AND
-    sub_sem = 1 AND
+    sub_sem = 2 AND
     sub_cur = $cur_id ORDER BY sub_sem ASC
     ";
     }else{

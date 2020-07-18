@@ -22,6 +22,7 @@ if(isset($_POST["query"])){
     FROM
     students, college, course 
     WHERE
+    students.status = 0 AND
     students.student_college =  college.college_id AND
     students.student_course = course.course_id AND 
     year_lvl LIKE '%".$search."%' LIMIT $offset, $no_of_records_per_page
@@ -32,6 +33,7 @@ if(isset($_POST["query"])){
         FROM
         students, college, course 
         WHERE
+        students.status = 0 AND
         students.student_college =  college.college_id AND
         students.student_course = course.course_id ";
     }

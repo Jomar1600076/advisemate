@@ -29,25 +29,20 @@ if(!isset($_SESSION["chair_id"])){
     <?php include("includes/navbar.php"); ?>
     <?php include("includes/sidebar.php"); ?>
     <?php include("fetch_yrlvl.php"); ?>
-    <?php include("AdviserAddModal.php") ?>
+    <?php include("../super_admin1/StudentAddModal.php") ?>
   </header>
   <!--Main Navigation-->
 
   <!--Main layout-->
   <main class="pt-5 mx-lg-5">
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-2">
     <div class="row wow fadeIn">
         <div class="col">
           <div class="card">
           <div class="card-header primary-color-dark">
             <div class="row">
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#AdviserAddModal">
-                        <i class="far fa-file-alt mt-0"></i>
-                    </button>
-                </div>
                 <div class="col-md-2">    
-                    <input type="text" class="form-control mt-2" placeholder="Employee ID" name="search_id" id="search_id" autocomplete="off">
+                  <input type="text" class="form-control mt-2" placeholder="Student Info" name="student_search_id" id="student_search_id" autocomplete="off">
                 </div>
                 <div class="col"></div>
                 <div class="col-md-3">
@@ -62,17 +57,13 @@ if(!isset($_SESSION["chair_id"])){
                 <div class="table-wrapper">
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th>Employee ID</th>
-                            <th>Name</th>
-                            <th>Course</th>
-                            <th>College</th>
-                            <th>Year Level</th>
+                        <tr class="row">
+                            <th class="col-md-2">Student ID</th>
+                            <th class="col">Name</th>
                         </tr>
                         </thead>
-                        <tbody id="fetchAdvisers">
-                        </tbody>
-                    </table>
+                        <tbody>
+                        <?php include("chair_fetch_goodstud.php") ?>
                 </div>
             </div>
         </div>
@@ -81,26 +72,18 @@ if(!isset($_SESSION["chair_id"])){
   </main>
   <script>
     $(document).ready(function(){
-      advisers();
-      function advisers(){
-        $.ajax({
-          url: "fetch_users.php",
-          method: "POST",
-          data: {getAdvisers:1},
-          success : function(data){
-            $("#fetchAdvisers").html(data);
-          }
-        });
-      }
+      $('li').click(function() {
+        $(this).addClass('active').siblings().removeClass('active');
+      });
 
-      load_adviser();
-      function load_adviser(query){
+        load_students();
+      function load_students(query){
         $.ajax({
-          url:"filter_adviser.php",
+          url:"filter_students.php",
           method:"POST",
           data:{query:query},
           success:function(data){
-            $('#fetchAdvisers').html(data);
+            $('#getStudents').html(data);
           }
         });
       }
@@ -108,14 +91,37 @@ if(!isset($_SESSION["chair_id"])){
         var search = $(this).children("option:selected").val();
         if(search != '')
         {
-          load_adviser(search);
+          load_students(search);
+        }
+      });
+
+      /*search*/
+      load_student_search();
+      function load_student_search(query)
+      {
+        $.ajax({
+        url:"../super_admin1/fetchStudentSearch.php",
+        method:"POST",
+        data:{query:query},
+        success:function(data)
+        {
+          $('#getStudents').html(data);
+        }
+        });
+      }
+      $('#student_search_id').keyup(function(){
+        var search = $(this).val();
+        if(search != '')
+        {
+          load_student_search(search);
         }
         else
         {
-          load_adviser();
+          load_student_search();
         }
       });
-    })  
-  </script>
-</body>
-</html>
+
+    })
+</script>
+  </body>
+  </html>

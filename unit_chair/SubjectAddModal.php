@@ -14,7 +14,7 @@
         for($i=0;$i<$totalSubcode;$i++) {
 
         $insub_cur = $sub_cur[$i];
-        $insub_code = $sub_code[$i];
+        $insub_code = $sub_code[$i];  
         $insub_desc = $sub_desc[$i];
         $insub_prereq = $sub_prereq[$i];
         $insub_unit = $sub_unit[$i];
@@ -23,8 +23,19 @@
         $sql = "INSERT INTO subjects (sub_code, sub_desc, sub_prereq, sub_unit, sub_year, sub_sem, sub_cur)
                 VALUES
                 ('$insub_code', '$insub_desc', '$insub_prereq', '$insub_unit', '$insub_year', '$insub_sem', '$insub_cur')";
-                $res=mysqli_query($con, $sql);
+        $res=mysqli_query($con, $sql);
+
+        $createdby = $_SESSION["chair_id"];
+        $date_now = date("Y-m-d H:i:s");
+        $info = "Subject Added";
+        $log_query = "INSERT INTO subject_logs (trans_info, trans_date, createdby, sub_id) VALUES('$info', '$date_now', '$createdby', '$insub_code')";
+        $result = mysqli_query($con, $log_query);
         }
+        if(!$result)
+          {
+            printf("Error: %s\n", mysqli_error($con));
+          exit();
+          }
         if(!$res)                   {
           printf("Error: %s\n", mysqli_error($con));
           exit();

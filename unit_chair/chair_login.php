@@ -26,7 +26,7 @@ if(isset($_POST["uChairUname"]) && isset($_POST["uChairPword"])){
 	if($count == 1){
 		$run_query = mysqli_fetch_array($row);
 		$_SESSION["chair_id"] = $run_query["chair_id"];
-        $_SESSION["chair_fname"] = $run_query["chair_fname"];
+        $_SESSION["chair_fname"] = $run_query["chair_fname"] ;
         $u_id = $_SESSION["chair_id"];
         $uip = $_SERVER['REMOTE_ADDR'];
         $action="Login";

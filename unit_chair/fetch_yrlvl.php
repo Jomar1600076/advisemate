@@ -26,10 +26,16 @@
       $sem = $sem."<option value=$row2[0]>$row2[1]</option>";
   }
   /* adviser */
-  $sqlad = "SELECT * FROM adviser";
+  $sqlad = "SELECT * FROM advisers";
   $curad = mysqli_query($connect, $sqlad);
   $ad = "";
   while($row = mysqli_fetch_array($curad)){
       $ad = $ad."<option value=$row[0]>$row[3]</option>";
+  }
+  if(!$curad){
+    {
+      printf("Error: %s\n", mysqli_error($connect));
+    exit();
+    }
   }
 ?>

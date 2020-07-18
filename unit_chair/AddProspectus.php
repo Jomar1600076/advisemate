@@ -9,9 +9,20 @@
                 ('$cur_year', '$cur_desc')";
                 if(mysqli_query($con, $sql)){
                       echo '<script>
-                              alert("Subject Successfully Added")
+                              alert("Curriculum Successfully Added")
                               javascript:history.go(-1);
                           </script>';   
+
+                          $createdby = $_SESSION["chair_id"];
+                          $date_now = date("Y-m-d H:i:s");
+                          $info = "Added Adviser";
+                          $log_query = "INSERT INTO chair_logs(chair_id, trans_info, trans_date, createdby) VALUES($user_id, '$info', '$date_now', '$createdby')";
+                          if(mysqli_query($con, $log_query)){
+                  
+                          }else{
+                              echo "Error" .mysqli_error($con);
+                          }
+
                 }else{
                   echo "Error" .mysqli_error($con);
                 }
@@ -32,7 +43,7 @@
       <div class="modal-body">
           <div class="container">
         <!-- Default form register -->
-            <form class="text-center" action="" method="post">
+            <form class="text-center" action="" method="post" autocomplete="off">
               <div class="form-row mb-4">
                 <div class="col">
                   <input type="date" class="form-control mb-2" placeholder="Year" name="cur_year" required>

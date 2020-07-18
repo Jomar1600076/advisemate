@@ -1,7 +1,9 @@
 <?php
 session_start();
 if(!isset($_SESSION["chair_id"])){
-	header("location:login.php");}
+  header("location:login.php");}
+
+  include_once "function.php"; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,21 +40,68 @@ if(!isset($_SESSION["chair_id"])){
   <!--Main layout-->
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
-      <div class="row wow fadeIn">
-      <div class="col">
           <div class="card">
-          <div class="card-header primary-color-dark">
+             <div class="card-body">
+               <div class="row">
+                  <div class="col-md-3">
+                    <div class="card">
+                      <div class="card-body secondary-color text-white text-center">
+                        <h1><?php echo count_advisers($con); ?></h1>
+                        <p>Advisers</p>
+                      </div>
+                      <div class="card-footer">
+                          <a href="chair_adviser.php">
+                            <i class="fas fa-external-link-alt"></i>Go To
+                          </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card">
+                      <div class="card-body secondary-color text-white text-center">
+                        <h1><?php echo count_studs($con); ?></h1>
+                        <p>Students</p>
+                      </div>
+                      <div class="card-footer">
+                          <a href="chair_adviser.php">
+                            <i class="fas fa-external-link-alt"></i>Go To
+                          </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card">
+                      <div class="card-body secondary-color text-white text-center">
+                        <h1><?php echo count_curs($con); ?></h1>
+                        <p>Curriculum</p>
+                      </div>
+                      <div class="card-footer">
+                          <a href="chair_adviser.php">
+                            <i class="fas fa-external-link-alt"></i>Go To
+                          </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card">
+                      <div class="card-body secondary-color text-white text-center">
+                        <h1><?php echo count_subs($con); ?></h1>
+                        <p>Curriculum</p>
+                      </div>
+                      <div class="card-footer">
+                          <a href="chair_adviser.php">
+                            <i class="fas fa-external-link-alt"></i>Go To
+                          </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
           </div>
-            <div class="card-body">
-              <div class="col-md-7">
-              </div>
-              <div class="col-md-5">
-                  <div id='loading'>loading...</div>
-                  <div id='calendar'></div>
-              </div>
-            </div>
-        </div>
-      </div>
     </div>
   </main>
 </body>

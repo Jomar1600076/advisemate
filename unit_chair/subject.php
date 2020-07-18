@@ -53,17 +53,26 @@ if(!isset($_SESSION["chair_id"])){
                             <option value = ""selected>Select Year Level</option>
                             <?php echo $yr_lvl;?>
                         </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="browser-default custom-select mb-2" name="sem" id="sem">
-                            <option value = ""selected>Select Sem</option>
-                            <?php echo $sem;?>
-                        </select>
-                    </div>                    
+                    </div>               
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-wrapper">
+                    <h6>First Semester</h6>
+                    <table class="table bordered">
+                        <thead>
+                        <tr>
+                            <th>Subject Code</th>
+                            <th>Desc</th>
+                            <th>Pre-req</th>
+                            <th>Unit</th>
+                        </tr>
+                        </thead>
+                        <tbody id="subjects_sem1">
+                        </tbody>
+                    </table>
+    <hr>
+                    <h6>Second Semester</h6>
                     <table class="table">
                         <thead>
                         <tr>
@@ -71,11 +80,9 @@ if(!isset($_SESSION["chair_id"])){
                             <th>Desc</th>
                             <th>Pre-req</th>
                             <th>Unit</th>
-                            <th>Year</th>
-                            <th>Sem</th>
                         </tr>
                         </thead>
-                        <tbody id="subjects">
+                        <tbody id="subjects_sem2">
                         </tbody>
                     </table>
                 </div>
@@ -96,18 +103,30 @@ if(!isset($_SESSION["chair_id"])){
                     method: "POST",
                     data:  {getSubjects:1},
                     success : function(data){
-                        $("#subjects").html(data);
+                        $("#subjects_sem1").html(data);
                     } 
                 })
             }
-        load_subjects();
-        function load_subjects(query){
+        load_sem_one();
+        function load_sem_one(query){
             $.ajax({
             url:"   filter_subjects.php?id="+user_id+"",
             method:"POST",
             data:{query:query},
             success:function(data){
-                $('#subjects').html(data);
+                $('#subjects_sem1').html(data);
+            }
+            });
+        }
+
+        load_sem_two();
+        function load_sem_two(query){
+            $.ajax({
+            url:"   filter_subjects_two.php?id="+user_id+"",
+            method:"POST",
+            data:{query:query},
+            success:function(data){
+                $('#subjects_sem2').html(data);
             }
             });
         }
@@ -115,26 +134,17 @@ if(!isset($_SESSION["chair_id"])){
             var search = $(this).children("option:selected").val();
             if(search != '')
             {
-            load_subjects(search);
+            load_sem_one(search);
+            load_sem_two(search);
             }
             else
             {
-            load_subjects();
-            }
-        });
-        $("#sem").change(function(){
-            var search_sem = $(this).children("option:selected").val();
-            if(search_sem != '')
-            {
-            load_subjects(search_sem);
-            }
-            else
-            {
-            load_subjects();
+            load_sem_one();
+            load_sem_one();
             }
         });
 
-        })
+    })
     </script>
   </body>
   </html>
