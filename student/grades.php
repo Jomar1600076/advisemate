@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION["uid"])){
-	header("location:into_login.php");
+	header("location:../index.php");
 }
 include('db.php');
 include('function.php');
@@ -87,7 +87,7 @@ include('function.php');
 
 										if($month >= 8){
 										  $month_now = 1;
-										} elseif($month <= 5) {
+										} elseif($month <= 7) {
 										  $month_now = 2;
 										}else{
 											echo "Summer";
@@ -111,6 +111,8 @@ include('function.php');
 						      </tr>
 						    </thead>
 						    <tbody><?php
+									
+										$edit = '';
 						    		  $user_id = $_SESSION["uid"];
 										$connect = mysqli_connect("localhost", "root", "", "advisemate");
 										$query = "SELECT
@@ -194,22 +196,25 @@ include('function.php');
 												<?php
 								        	}else{
 													 echo $row['grade'];
-													 
+													 $edit = [false];
 												}
 
 											?>	
 										</td>
+										
+										<input type="text" value="<?php  ?>">
 						        <?php
 											   }
 
 								}
+								
 							    ?>
 						      </tr>
 						    </tbody>
 						  </table>
 						  <button class="btn btn-primary btn-sm float-right" id="submit" type="submit" name="submit">Submit</button>
 						</form>
-							<button class="btn btn-primary btn-sm float-right editgrade" type="button" >Edit</button>	
+							<button class="btn btn-primary btn-sm float-right editgrade"  id="editgrade" type="button" >Edit</button>	
 						  <span id="sum" class="float-right mr-2"></span>
 						  <span id="val" class="float-right mr-2"></span>
 					</div>    

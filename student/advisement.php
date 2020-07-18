@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION["uid"])){
-	header("location:into_login.php");
+	header("location:../index.php");
 }
 include('db.php');
 include('function.php');
@@ -59,8 +59,9 @@ include('function.php');
 						
 				</div>
         </div>
-		<form action="advisement_pdf.php" method="POST">
-			<input type="submit" class="print_float" value="Print"><i class="fas fa-print"></i></input>
+		<form action="advisement_pdf.php" method="GET">
+			<input type="hidden" class="hidden" name="user_id" value="<?php echo $_SESSION["uid"] ?>">
+			<input type="submit" class="print_float"><i class="fas fa-print"></i></input>
 		</form>
 
 
@@ -80,7 +81,6 @@ include('function.php');
 		    function makeCode(){
 		    	const element = document.getElementById('tab');	
 		    	html2pdf().from(element).save();
-
 		    }
 		})
   

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["uid"])){
-	header("location:into_login.php");
+	header("location:../index.php");
 }
 include('db.php');
 include('function.php');

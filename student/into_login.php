@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["uid"])) {
-  header("location:index.php");
+  header("location:../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +46,6 @@ if (isset($_SESSION["uid"])) {
                       <p class="h4 mb-4 text-white">Log in</p>
                       <!-- Email -->
                       <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" name="username" placeholder="E-mail">
-
                       <!-- Password -->
                       <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password" placeholder="Password">
                       <!-- Sign in button -->
