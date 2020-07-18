@@ -1,5 +1,4 @@
 <?php
-
 $con = mysqli_connect("localhost", "root", "", "advisemate");
 if (isset($_GET['pageno'])) {
     $pageno = $_GET['pageno'];
@@ -49,6 +48,17 @@ $sql = "SELECT student_id, concat(fname,' ',mname, ' ',lname) Fullname, course_d
                 $status = 0;
                 $sql = "UPDATE students SET status = '".$status."' WHERE student_id = '$updateid'";
                 $run_query = mysqli_query($con,$sql);
+
+                $createdby = $_SESSION["ad_id"];
+                $date_now = date("Y-m-d H:i:s");
+                $info = "Accepted Student";
+                $log_query = "INSERT INTO student_logs(student_id, trans_info, trans_date, createdby) VALUES($updateid, '$info', '$date_now', '$createdby')";
+                if(mysqli_query($con, $log_query)){
+        
+                }else{
+                    echo "Error" .mysqli_error($con);
+                }
+                
               }
               if (!$run_query) 
                 {

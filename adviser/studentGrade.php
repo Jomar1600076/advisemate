@@ -108,7 +108,7 @@ if(!isset($_SESSION["ad_id"])){
                                             <td><?php echo $row['sub_code']; ?></td>
                                             <td><?php echo $row['sub_desc']; ?></td>
                                             <td><?php echo $row['sub_prereq']; ?></td>
-                                            <td><?php echo $row['sub_unit']; ?></td>
+                                            <td><?php echo $row['sub_unit']; ?></td>    
                                             <td style="display:none;"><input type="hidden" name="grade_id[]" value="<?php echo $row['id']; ?>"> </td>
                                             <?php
 

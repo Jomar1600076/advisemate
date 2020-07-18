@@ -25,7 +25,7 @@
                 <div class="row mb-5">
                     <div class="col"> 
                     <!-- Default form register -->
-                            <form class="text-center p-2" action="addStudent.php" method="POST">
+                            <form class="text-center p-2" action="updatestudent.php" method="POST">
                             <div class="form-row mb-3">
                                 <div class="col">
                                     <input type="text" id="fname" class="form-control white" name="fname" value="<?php echo $fname ?>" disabled>

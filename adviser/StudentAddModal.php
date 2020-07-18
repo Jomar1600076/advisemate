@@ -175,8 +175,17 @@
                 {
                     echo '<script>
                     alert("Student Successfully Added")
-                    location.reload();
+                    window.location.href = "javascript:history.go(-1)"
                 </script>';
+                  $createdby = $_SESSION["ad_id"];
+                  $date_now = date("Y-m-d H:i:s");
+                  $info = "Added Student";
+                  $log_query = "INSERT INTO student_logs(student_id, trans_info, trans_date, createdby) VALUES($user_id, '$info', '$date_now', '$createdby')";
+                  if(mysqli_query($con, $log_query)){
+        
+                  }else{
+                    echo "Error" .mysqli_error($con);
+                  }
                 }
             else
                 {
@@ -185,35 +194,6 @@
         }else{
             echo "Error" .mysqli_error($con);
         }
-    }
-
-    if(isset($_POST["editStudent"])){
-        error_reporting(E_ERROR | E_PARSE);
-        $user_id = false;
-        if(isset($_POST['user_id'])){
-            $user_id = $_POST['user_id'];
-        }
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $bday = $_POST["bday"];
-        $sex = $_POST["sex"];
-        $add = $_POST["add"];
-
-        $sql = "UPDATE students set fname='$fname', lname='$lname', bday='$bday', sex='$sex', address='$add'
-                WHERE student_id = '$user_id'";
-        echo $sql;
-        $run_query = mysqli_query($con, $sql);
-            if(mysqli_num_rows($run_query) < 0){
-                    echo '<script>
-                            alert("Student Successfully Added")
-                            window.location.href = "javascript:history.go(-1)"
-                        </script>';
-                }else{
-                    echo '<script>
-                            alert("Student Successfully Added")
-                            window.location.href = "javascript:history.go(-1)"
-                        </script>';
-                }
     }
 ?>
 <!-- Central Modal Small -->
@@ -239,7 +219,11 @@
               <input type="text" id="defaultRegisterPhoneLname" class="form-control mb-2" placeholder="Last Name" name="lname" required>
               <input type="text" id="defaultRegisterPhoneMname" class="form-control mb-2" placeholder="MIddle Name" name="mname" required>
               <input type="date" id="defaultRegisterFormBday" class="form-control mb-2" placeholder="Birthday" name="bday" required>
-              <input type="text" id="defaultRegisterFormSex" class="form-control mb-2" placeholder="Sex" name="sex" required>
+              <select class="browser-default custom-select mb-2" name="sex">
+                <option selected>Sex</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
               <input type="hidden" id="defaultRegisterFormYr_Lvl" class="form-control mb-2" value="<?php echo $_SESSION["ad_yrlvl"]; ?>" name="yr_lvl" required>
               <input type="text" id="defaultRegisterFormAddress" class="form-control mb-2" placeholder="Address" name="add" required>
               <select class="browser-default custom-select mb-2" name="cur">

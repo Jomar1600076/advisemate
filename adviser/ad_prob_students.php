@@ -43,11 +43,6 @@ if(!isset($_SESSION["ad_id"])){
           <div class="card">
           <div class="card-header primary-color-dark">
             <div class="row">
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#StudentAddModal">
-                        <i class="far fa-file-alt mt-0"></i>
-                    </button>
-                </div>
                 <div class="col-md-2">    
                   <input type="text" class="form-control mt-2" placeholder="Student Info" name="student_search_id" id="student_search_id" autocomplete="off">
                 </div>
@@ -62,13 +57,11 @@ if(!isset($_SESSION["ad_id"])){
                         <tr class="row">
                             <th class="col">Student ID</th>
                             <th class="col">Name</th>
-                            <th class="col"></th>
-                            <th class="col">Grade</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php include("fetch_opstudents.php") ?>
-                        
+                        </tbody>
                 </div>
             </div>
         </div>

@@ -43,11 +43,6 @@ if(!isset($_SESSION["ad_id"])){
           <div class="card">
           <div class="card-header primary-color-dark">
             <div class="row">
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#StudentAddModal">
-                        <i class="far fa-file-alt mt-0"></i>
-                    </button>
-                </div>
                 <div class="col-md-2">    
                   <input type="text" class="form-control mt-2" placeholder="Student Info" name="student_search_id" id="student_search_id" autocomplete="off">
                 </div>
@@ -59,14 +54,13 @@ if(!isset($_SESSION["ad_id"])){
                 <div class="table-wrapper">
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th>Student ID</th>
-                            <th>Name</th>
+                        <tr class="row">
+                            <th class="col-md-2">Student ID</th>
+                            <th class="col">Name</th>
                         </tr>
                         </thead>
-                        <tbody id="getStudents">
-                        </tbody>
-                    </table>
+                        <tbody>
+                        <?php include("fetch_goodstud.php") ?>
                 </div>
             </div>
         </div>

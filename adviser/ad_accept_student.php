@@ -44,11 +44,6 @@ if(!isset($_SESSION["ad_id"])){
           <div class="card">
           <div class="card-header primary-color-dark">
             <div class="row">
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#StudentAddModal">
-                        <i class="far fa-file-alt mt-0"></i>
-                    </button>
-                </div>
             </div>  
         </div>
             <div class="card-body">
