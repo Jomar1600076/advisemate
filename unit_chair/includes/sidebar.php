@@ -6,8 +6,8 @@
     </div>
 
     <div class="list-group list-group-flush mt-5" id="sidebar">
-      <a href="index.php" class="list-group-item" data-toggle="collapse" data-target="#students"
-    aria-expanded="false" aria-controls="students">
+      <a href="index.php" class="list-group-item"
+     aria-controls="students">
         <i class="fas fa-chart-pie mr-3"></i>Dashboard
       </a>
       <a href="chair_adviser.php" class="list-group-item list-group-item-action waves-effect">
@@ -19,9 +19,9 @@
             <ul id="students">
                 <a href="chair_students.php" class="list-group-item list-group-item-action">
                     <i class="fas fa-chalkboard-teacher mr-3"></i>All Students</a>
-                <a href="chair_students.php" class="list-group-item list-group-item-action">
+                <a href="chair_good_students.php" class="list-group-item list-group-item-action">
                     <i class="fas fa-users mr-3"></i>Outstanding St</a>
-                <a href="chair_subjects.php" class="list-group-item list-group-item-action">
+                <a href="chair_op_students.php" class="list-group-item list-group-item-action">
                     <i class="fas fa-book-open mr-3"></i>OP St</a>
             </ul>
       <a href="chair_subjects.php" class="list-group-item list-group-item-action waves-effect">

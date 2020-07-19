@@ -13,10 +13,16 @@
         </button>
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-            <li class="nav-item">
-                <a href="#" class="nav-link border border-light rounded waves-effect">
+            <li class="nav-item dropdown">
+                <a href="" class="nav-link border border-light rounded waves-effect"  data-toggle="dropdown"
+                aria-haspopup="true">
                     <i class="far fa-clipboard"></i>Reports
                 </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="stud_reports.php">Students</a>
+                  <a class="dropdown-item" href="grade_reports.php">Student Grades</a>
+                  <a class="dropdown-item" href="ad_reports.php">Advisers</a>
+                </div>
             </li>
             <li class="nav-item">
               <a href="./logout.php" class="nav-link border border-light rounded waves-effect">
