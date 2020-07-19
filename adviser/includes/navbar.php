@@ -14,11 +14,6 @@
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
             <li class="nav-item">
-                <a href="#" class="nav-link border border-light rounded waves-effect">
-                    <i class="far fa-clipboard"></i>Reports
-                </a>
-            </li>
-            <li class="nav-item">
               <a href="./logout.php" class="nav-link border border-light rounded waves-effect">
                 <i class="fas fa-sign-out-alt"></i>Logout
               </a>
